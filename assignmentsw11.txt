@@ -1,0 +1,316 @@
+#ASSIGNMENTS WEEK11-
+
+
+#HOCAM COK EKSIK, EKLEYECEGIM INS YARIN
+
+
+#1.hwk-the battelship
+###################################################################################3
+
+
+#2 Battelship =  XXXX #with 4 holes
+#2 Cruiser = XXX #3 holes
+#2 Submarine = XX #2 holes
+#2 Destroyer = XX #1 hole
+
+#Battleshipgame
+
+from random import randint
+from time import sleep
+print("The Battleship Game")
+print("You have 15 moves to sink my ships.")
+
+ship_coord_board =[["___", "___", "___", "___", "___", "___", "___", "___", "___", "_X_"],
+                   ["___", "___", "___", "___", "___", "___", "___", "___", "___", "_X_"],
+                   ["___", "_X_", "___", "___", "_X_", "_X_", "_X_", "___", "___", "___"],
+                   ["___", "_X_", "___", "___", "___", "___", "___", "___", "___", "___"],
+                   ["___", "___", "___", "_X_", "___", "___", "___", "_X_", "___", "___"],
+                   ["___", "___", "___", "_X_", "___", "___", "___", "___", "___", "___"],
+                   ["___", "___", "___", "_X_", "___", "___", "___", "___", "___", "___"],
+                   ["___", "___", "___", "_X_", "___", "___", "_X_", "_X_", "_X_", "_X_"],
+                   ["_X_", "_X_", "_X_", "___", "___", "___", "___", "___", "___", "___"],
+                   ["___", "___", "___", "___", "_X_", "___", "___", "___", "___", "___"]]
+
+board =           [["___", "___", "___", "___", "___", "___", "___", "___", "___", "___"],
+                   ["___", "___", "___", "___", "___", "___", "___", "___", "___", "___"],
+                   ["___", "___", "___", "___", "___", "___", "___", "___", "___", "___"],
+                   ["___", "___", "___", "___", "___", "___", "___", "___", "___", "___"],
+                   ["___", "___", "___", "___", "___", "___", "___", "___", "___", "___"],
+                   ["___", "___", "___", "___", "___", "___", "___", "___", "___", "___"],
+                   ["___", "___", "___", "___", "___", "___", "___", "___", "___", "___"],
+                   ["___", "___", "___", "___", "___", "___", "___", "___", "___", "___"],
+                   ["___", "___", "___", "___", "___", "___", "___", "___", "___", "___"],
+                   ["___", "___", "___", "___", "___", "___", "___", "___", "___", "___"]]
+
+for i in board:
+    print("\t".expandtabs(30), *i, end="\n"*2)
+ship_coordinates  =  [[0, 9], [1, 9], [2, 1], [2, 4], [2, 5],
+                      [2, 6], [3, 1], [4, 3], [4, 7], [5, 3],
+                      [6, 3], [7, 3], [7, 6], [7, 7], [7, 8],
+                      [7, 9], [8, 0], [8, 1], [8, 2], [9, 4]]
+
+hitted_coord = []
+missed_coord = []
+l =[]
+move_limit = 15
+
+
+row = int(input("Enter a row number from 1 to 10: "))
+col = int(input("Enter a col number from 1 to 10: "))
+
+row = int(row )-1
+col = int(col)-1
+
+
+while True: #bunu degistirmeliyiz cunku l'ye bu koordinatlari list seklinde atmaliyiz.
+    row              #     l.append(row) #bu l append yerine asagida baska sey avr
+    col
+                                  # tahtada gorunmesi icin
+
+    if [row, col] in  ship_coordinates:                      #if l[-1] in ship_coordinates:
+        board[row] [col] = 'X'
+        ship_coordinates.remove([row, col])          #burada pop ile kazanma listesinden o koordinatlari cikar
+        print(f'{[row, col]} is checking.')
+        sleep(1)
+        print('You hit a part of my ship.')
+       #gorunen(tablo)
+        hitted_coord.append([row,col])  # boyle ir sey lazim olup om emin degilim
+
+
+        if ship_coordinates == []:
+            print('Congrats, you won the game.')
+            break
+
+    elif [row, col] in hitted_coord or missed_coor:
+        print("You  may not guess there, this move is already taken.")  # Bunu nasil engelleyebiliriz.
+
+    elif row > 10 or col > 10:
+        print("Oops, that is not even in the ocean.")
+
+    else:
+        print(f'{[row, col]} is checking.')
+        sleep(1)
+        print("You missed my battleship.")
+        move_limit-=1
+        print(f'You have {move_limit} turns left.')
+        board[row] [col] = ' '
+        missed_coord.append([rov, col])
+        sleep(5)
+       #gorunen(tablo)
+
+        if move_limit == 0:
+            print("""Game Over
+            The answer was : """)
+           #gorunen(cozumtablosu())  #cozum tablosunu ekrana printler
+            boardend = board.copy()
+            break
+#clear_output()
+for i in board:
+    print("\t".expandtabs(30), *i, end="\n" * 2)
+
+#2.hwk
+###################################################################################
+#Odev 2:
+#Bir cep telefonu objesi yapmanizi istiyoruz.
+#Telefonun marka, model, uretim yili, tel nosu ve rehber
+#ozelliklerinin(class attributes) olmasini bekliyoruz.
+#Ayrica bu objenin rehbere no ekleme, silme, rehberi goruntuleme,
+#rehberden secilen bir noyu arama(gostermelik) gibi ozelliklerinin
+#(class methods) olmasini istiyoruz.
+
+#kisi arama diye fonks yapip tel rehberde varsa print ile araniyor yazdirdim
+
+
+from time import sleep
+
+
+class phone():
+    brand = "Iphone"  # bu satir ve deva, eden 4 satir class attributes
+    model = "6S+"
+    production_year = 2016
+    phone_number = '0682791484'
+    contacts = {"ayse": '0612345678', "fatma": '0623456789', "hayriye": '0634567890'}
+
+    def __init__(self, brand, model, production_year, phone_number, contacts):
+        self.brand = brand
+        self.model = model
+        self.production_year = production_year
+        self.phone_number = phone_number
+        self.contacts = contacts
+
+    def add_number(self, name, number):
+        add_name = input("name: ")
+        add_number = input("number: ")
+        new_pers = {add_name, add_number}
+        contacts.update(new_pers)
+        print(f'The person called {add_name}, {add_number}, number has been added to the contacts.')
+
+    def delete_number(self, name, number):
+        delete_name = input("name: ")
+        delete_number = input("number: ")
+        ex_pers = {delete_name, delete_number}
+        contacts.pop(ex_pers)
+        print(f'The person called {add_name}, {add_number}, number has been removed from the contacts.')
+
+    def display(self):
+        print(phone.contacts)
+
+        # ya da uzun yol
+        # print("Contacts:", self.contacts)
+        # for key, value in contacts.items():
+        #    print("{} = {}".format(key, value))
+
+    def dialer(self):
+        whom_to_call = input("Who would you like to call?")
+        if whom_to_call in contacts:
+            print(f'Dialing, {whom_to_call}', "...")
+            sleep(3)
+
+        else:
+            print("This action cannot be operated, this person is not in your contacts list.")
+
+
+a = int(input("""Program about a phone. Here we defined the features of the phone as follows:'
+         brand,
+         model,
+         production_year,
+         phone_number, 
+         contacts.
+         There are several functions you can use: 
+         press 1 to add a number to your contact list,
+         press 2 to delete someone, 
+         press 3 to display your contacts, and finally
+         press 4 to call someone from your list:"""))
+if a == 1:
+    add_number()
+elif a == 2:
+    delete_number()
+elif a == 3:
+    display()
+elif a == 4:
+    dialer()
+else:
+    print('Please enter a number from 1 to and including 4 : ')    
+
+
+#3.hwk
+######################################################################################
+#Bir muzik calar objesi yapmanizi istiyoruz. Class attribute
+# olarak bos bir sarki listesi
+# olusturun. Class methods olarak sarki listesini sifirlama,
+# listeyi goruntuleme, sarki ekleme,
+#sarki silme, sonraki parcayi cal,
+# onceki parcayi cal, karisik cal ozelliklerini ekleyin.
+
+import random
+
+import time
+
+
+
+class player():
+    playlist = []
+
+    def __init__(self, playlist):
+        self.playlist = playlist
+
+    def reset(self):
+        for i in playlist:
+            del i
+
+    def display(self):
+        print(player.playlist)
+
+    def add_a_song(self):
+        song_to_add = input('Enter the song name you would like to add.')
+        playlist.append(f'{song_to_add}')
+        print("It will be added in seconds...")
+        sleep(2)
+        print(player.playlist)
+
+    def delete_a_song(self):
+        song_to_delete = input('Enter the song name you would like to delete.')
+        del playlist[index(f'{song_to_delete}')]
+        print("It will be deleted in seconds...")
+        sleep(2)
+        print(player.playlist)
+
+    def play_next(self):
+        now_playing = input("What is playing now")  # ya bunuunnn boyl yapilmayacagi bariz
+        print(playlist[index[(f'{now_playing}')] + 1])
+
+    def play_prev(self):
+        now_playing = input("What is playing now")  #ya bunuunnn boyl yapilmayacagi bariz
+        print(playlist[index[(f'{now_playing}')]-1])         #ama su an aklima bir sey gelmedi duzeletecegim
+
+
+    def shuffle(self):
+        random.shuffle(playlist)
+        print(player.playlist)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
