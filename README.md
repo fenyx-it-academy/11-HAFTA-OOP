@@ -1,5 +1,6 @@
 # 11-HAFTA-OOP
-Odev 1: Gecen hafta basladigimiz amiral batti oyununu gelistirecegiz. Bu hafta kodunuzu Object Oriented sekline cevirmenizi istiyoruz. Ayrica randomsuz yapanlarin random gemi yerlestirme ozelligini eklemelerini bekliyoruz. Bonus ozellik olarak oyunun bilgisayara karsi oynanan iki kisilik versiyonunu yapabilirsiniz. 
+Odev 1: Gecen hafta basladigimiz amiral batti oyununu gelistirecegiz. Bu hafta kodunuzu Object Oriented sekline cevirmenizi istiyoruz.
+Ayrica randomsuz yapanlarin random gemi yerlestirme ozelligini eklemelerini bekliyoruz. Bonus ozellik olarak oyunun bilgisayara karsi oynanan iki kisilik versiyonunu yapabilirsiniz. 
 
 Odev 2:
 Bir cep telefonu objesi yapmanizi istiyoruz. Telefonun marka, model, uretim yili, tel nosu ve rehber ozelliklerinin(class attributes) olmasini bekliyoruz. 
