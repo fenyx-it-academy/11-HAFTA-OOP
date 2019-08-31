@@ -39,3 +39,25 @@ class Muzikcalar():
     def karisik_cal(self):
         karisik = random.randint(0, len(self.sarkilistesi) - 1)
         print(self.sarkilistesi[karisik], "Caliniyor..")
+
+
+m1 = Muzikcalar()
+
+m1.sarki_ekle("Ahmet Kaya - Kum Gibi")
+
+m1.sarki_ekle("Ahmet Kaya - Aglama Annem")
+
+m1.sarki_ekle("Ahmet Kaya Oyle Bir Yerdeyim Ki")
+
+m1.sarki_ekle("Ahmet Kaya - Aglama Annem (Konser)")
+
+m1.sarkilistesi_goruntule()
+
+m1.sarki_sil("Ahmet Kaya - Aglama Annem (Konser)")
+
+m1.sonrakisarki_cal("Ahmet Kaya - Kum Gibi")
+
+m1.oncekisarki_cal("Ahmet Kaya Oyle Bir Yerdeyim Ki")
+
+m1.sarkilistesi_goruntule()
+m1.karisik_cal()

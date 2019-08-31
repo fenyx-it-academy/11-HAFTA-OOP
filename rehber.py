@@ -27,3 +27,16 @@ class TelefonRehberi():
         else:
             print("\n rehberdeki", numara, "aranıyor..")
 
+
+r1 = TelefonRehberi()
+
+r1.rehberEkle("1")
+r1.rehberEkle("2")
+r1.rehberEkle("3")
+r1.rehberGoruntule()
+
+r1.rehberSil("3")
+
+r1.rehberGoruntule()
+
+r1.rehberAra("2")
