@@ -5,7 +5,9 @@ class Battleships():
         self.all_coor = [[a, b] for a in range(10) for b in range(10)]
         self.ships = []
         self.print()
+        self.deploy()
         self.play()
+    def deploy(self):
         counter = 0
         #for ships which has 4 units
         while True:
