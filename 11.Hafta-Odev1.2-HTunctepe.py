@@ -315,7 +315,7 @@ def gamePlay(ocean, sankNoOfShips):
                         sankNoOfShips += 1
                         rightMoves.append(move)
                     gameBoardPrinter(ocean)
-                    turn += 11
+                    turn += 1
             else:
                 print('\n!!!...WARNING...Enter an integer from the following "1,2,3,4,5,6,7,8,9,10"\n')
                 continue
@@ -326,7 +326,7 @@ def gamePlay(ocean, sankNoOfShips):
         except ValueError:
             print('Enter an integer from the following "1,2,3,4,5,6,7,8,9,10"')
     print(f'{turn - 1} Unfortunately you ran out of moves.....YOU LOST!' +
-          'Game Report:\n'
+          '\nGame Report:\n'
           '\nYou sank ' + str(sankNoOfShips) + ' ships.'
           '\nThe ships were at the following positions:')
     gameEnd(ocean, shipPositionList)
