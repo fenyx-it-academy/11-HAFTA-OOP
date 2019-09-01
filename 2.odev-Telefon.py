@@ -35,9 +35,8 @@ class ceptelefonu():
 cep1 = ceptelefonu('IPHONE','Iphone7','20.09.2019','o9o5o58765432','Ensar Baltas')
 cep2 = ceptelefonu('IPHONE','Iphone6','20.09.2015','o9o5o52345678','Erkan Sen')
 cep3 = ceptelefonu('IPHONE','Iphone5','20.09.2010','o9o5o59876543','Ahmet Sahin')
+print(ceptelefonu.cep1)
 
-cep1.model_ekle.append('IphoneX')
-cep2.isim_ekle.append('Mehmet Kaplan')
 
   
 
