@@ -146,8 +146,7 @@ c4=Telefon()
 c5=Telefon()
 c6=Telefon()
 c7=Telefon()
-#simdilik 7 telefon kaydedecek yer olusturduk.bunu otomatik olarak nasil yapacagimi hala bilmiyorum.
-#for dongusuyle bir listenin ustunden gidemiyorum.listenin elemanlari string oldugu icin kabul etmiyor
+
 telefonlar=[cihaz1,cihaz2,cihaz3,c4,c5,c6,c7]
 
 
