@@ -544,7 +544,7 @@ if kul1=='2':
     havuz11.append(input("Denizalti2 icin yer secin :")) 
 
 #print(havuz1)
-#print(havuz11)
+print(havuz11)
 #print("zz ...",zz)       
 
 p =   {'a1':'[ ]','a2':'[ ]','a3':'[ ]','a4':'[ ]','a5':'[ ]','a6':'[ ]','a7':'[ ]','a8':'[ ]','a9':'[ ]','a10':'[ ]',
@@ -575,7 +575,7 @@ sayac1=0
 sayac2=0
 basarisiz1=0
 basarisiz2=0
-while basarisiz1<30: 
+while basarisiz1<20: 
     sleep(3)
     while True:
         sleep(2)
