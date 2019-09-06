@@ -9,81 +9,76 @@ time.sleep(3)
 table = [[" ~ " for k in range(10)] for l in range(10)]
 print("Shooting Table:\n")
 
+class Tafel:
+    def __init__(self):
+        self.table = table
+    def board(self):
+        global table
+        for t in self.table:
+            print("\t".center(30), *t, end="\n")
+mese = Tafel()
+mese.board()
 
-def board(table):
-    for t in table:
-        print("\t".center(30), *t, end="\n")
-board(table)
 
-
-class Ships:
-    global ship1
-    global ship11
-    global ship2
-    global ship22
-    global ship3
-    global ship33
-    global ship4
-    global ship44
-    ship1 = []
-    ship11 = []
-    ship2 = []
-    ship22 = []
-    ship3 = []
-    ship33 = []
-    ship4 = []
-    ship44 = []
-    ship_number = 0
-    while ship_number <= 8:                             #Gemileri olusturuyoruz
-        ship_number += 1
-        if ship1 not in table:
-            x = randint(0, 9)
-            y = randint(0, 9)
-            ship1 = [[x, y]]
-        else:
-            table.remove(ship1)
-        if ship11 not in table:
-            x = randint(0, 9)
-            y = randint(0, 9)
-            ship11 = [[x, y]]
-        else:
-            table.remove(ship11)
-        if ship2 not in table:
-            x = randint(0, 9)
-            y = randint(0, 7)
-            ship2 = [[x, y+1], [x, y+2]]        #koornidatlarin degerlerine ekleme yapildikca araliktan cikma ihtimaline karsi araligi azaltiyoruz
-        else:
-            table.remove(ship2)
-        if ship22 not in table:
-            x = randint(0, 7)
-            y = randint(0, 9)
-            ship22 = [[x+1, y], [x+2, y]]
-        else:
-            table.remove(ship22)
-        if ship3 not in table:
-            x = randint(0, 9)
-            y = randint(0, 6)
-            ship3 = [[x, y+1], [x, y+2], [x, y+3]]
-        else:
-            table.remove(ship3)
-        if ship33 not in table:
-            x = randint(0, 6)
-            y = randint(0, 9)
-            ship33 = [[x+1, y], [x+2, y], [x+3, y]]
-        else:
-            table.remove(ship33)
-        if ship4 not in table:
-            x = randint(0, 9)
-            y = randint(0, 5)
-            ship4 = [[x, y+1], [x, y+2], [x, y+3], [x, y+4]]
-        else:
-            table.remove(ship4)
-        if ship44 not in table:
-            x = randint(0, 5)
-            y = randint(0, 9)
-            ship44 = [[x+1, y], [x+2, y], [x+3, y], [x+4, y]]
-        else:
-            table.remove(ship44)
+ship1 = []
+ship11 = []
+ship2 = []
+ship22 = []
+ship3 = []
+ship33 = []
+ship4 = []
+ship44 = []
+ship_number = 0
+while ship_number <= 8:                             #Gemileri olusturuyoruz
+    ship_number += 1
+    if ship1 not in table:
+        x = randint(0, 9)
+        y = randint(0, 9)
+        ship1 = [[x, y]]
+    else:
+        table.remove(ship1)
+    if ship11 not in table:
+        x = randint(0, 9)
+        y = randint(0, 9)
+        ship11 = [[x, y]]
+    else:
+        table.remove(ship11)
+    if ship2 not in table:
+        x = randint(0, 9)
+        y = randint(0, 7)
+        ship2 = [[x, y+1], [x, y+2]]        #koornidatlarin degerlerine ekleme yapildikca araliktan cikma ihtimaline karsi araligi azaltiyoruz
+    else:
+        table.remove(ship2)
+    if ship22 not in table:
+        x = randint(0, 7)
+        y = randint(0, 9)
+        ship22 = [[x+1, y], [x+2, y]]
+    else:
+        table.remove(ship22)
+    if ship3 not in table:
+        x = randint(0, 9)
+        y = randint(0, 6)
+        ship3 = [[x, y+1], [x, y+2], [x, y+3]]
+    else:
+        table.remove(ship3)
+    if ship33 not in table:
+        x = randint(0, 6)
+        y = randint(0, 9)
+        ship33 = [[x+1, y], [x+2, y], [x+3, y]]
+    else:
+        table.remove(ship33)
+    if ship4 not in table:
+        x = randint(0, 9)
+        y = randint(0, 5)
+        ship4 = [[x, y+1], [x, y+2], [x, y+3], [x, y+4]]
+    else:
+        table.remove(ship4)
+    if ship44 not in table:
+        x = randint(0, 5)
+        y = randint(0, 9)
+        ship44 = [[x+1, y], [x+2, y], [x+3, y], [x+4, y]]
+    else:
+        table.remove(ship44)
 
 done_targets = []                                             #yapilan hedefleri listeye atalim
 exact_shoot = []                                              #dogru tahmin edilen atislari bir listeye atalim
@@ -165,7 +160,7 @@ while rights <= 15:
                         done_targets.append(i)
                     print('Congratulations...you shooted second Amiral Battleship\n')
                     exact_shoot.append(target)
-                board(table)
+                mese.board()
         else:
             print("OOPS...Missed ocean...You have to more carefull! Input a number between 0 - 9")
 
