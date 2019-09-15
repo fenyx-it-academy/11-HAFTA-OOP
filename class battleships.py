@@ -1,138 +1,175 @@
 from random import randint,choice
-class Battleships():
+from time import sleep
+
+class battleships():
     def __init__(self):
-        self.table = [["--" for i in range(10)] for i in range(10)]
+        self.table = [["--" for a in range(10)] for b in range(10)]
         self.all_coor = [[a, b] for a in range(10) for b in range(10)]
-        self.ships = []
-        self.print()
-        self.deploy()
+        self.time = False
         self.play()
+
+    def horizontal(self, unit):
+        while True:
+            self.ship = []
+            coor = choice(self.all_coor)
+            if coor[0] > 9 - unit:
+                coor[0] = 9 - unit
+            if coor not in self.ships:
+                #to check whether 'coor' is besides other ship or not
+                if [coor[0] + 1, coor[1]] not in self.ships:
+                    if [coor[0] - 1, coor[1]] not in self.ships:
+                        if [coor[0], coor[1] + 1] not in self.ships:
+                            if [coor[0], coor[1] - 1] not in self.ships:
+                                self.ship.append(coor)
+                
+            for i in range(unit-1):
+                coor = [coor[0] + 1] + [coor[1]]
+                if coor not in self.ships:
+                    #to check whether 'coor' is besides other ship or not
+                    if [coor[0] + 1, coor[1]] not in self.ships:
+                        if [coor[0] - 1, coor[1]] not in self.ships:
+                            if [coor[0], coor[1] + 1] not in self.ships:
+                                if [coor[0], coor[1] - 1] not in self.ships:
+                                    self.ship.append(coor)
+
+            if len(self.ship) == unit:
+                self.ships.extend(self.ship)
+            else:
+                continue
+            return self.ships
+
+    def vertical(self, unit):
+        while True:
+            self.ship = []
+            coor = choice(self.all_coor)
+            if coor[1] > 9 - unit:
+                coor[1] = 9 - unit
+            if coor not in self.ships:
+                #to check whether 'coor' is besides other ship or not
+                if [coor[0] + 1, coor[1]] not in self.ships:
+                    if [coor[0] - 1, coor[1]] not in self.ships:
+                        if [coor[0], coor[1] + 1] not in self.ships:
+                            if [coor[0], coor[1] - 1] not in self.ships:
+                                self.ship.append(coor)
+                
+            for i in range(unit-1):
+                coor = [coor[0]] + [coor[1] + 1]
+                if coor not in self.ships:
+                    #to check whether 'coor' is besides other ship or not
+                    if [coor[0] + 1, coor[1]] not in self.ships:
+                        if [coor[0] - 1, coor[1]] not in self.ships:
+                            if [coor[0], coor[1] + 1] not in self.ships:
+                                if [coor[0], coor[1] - 1] not in self.ships:
+                                    self.ship.append(coor)
+
+            if len(self.ship) == unit:
+                self.ships.extend(self.ship)
+            else:
+                continue
+            return self.ships
+
     def deploy(self):
-        counter = 0
         #for ships which has 4 units
+        counter = 0
         while True:
             mark = randint(0,1)
             if counter == 2:
                 break
-            
+
             elif mark == 0:
-                self.first_coor = choice(self.all_coor)
-                if self.first_coor[0] > 6:
-                    self.first_coor[0] = 6
-                self.second_coor = [self.first_coor[0] + 1] + [self.first_coor[1]]
-                self.third_coor = [self.first_coor[0] + 2] + [self.first_coor[1]]
-                self.fourth_coor = [self.first_coor[0] + 3] + [self.first_coor[1]]
-                if self.first_coor not in self.ships and self.second_coor not in self.ships and self.third_coor not in self.ships and self.fourth_coor not in self.ships:
-                    self.ships.extend([self.first_coor, self.second_coor, self.third_coor, self.fourth_coor])
-                    counter += 1
-                else:
-                    continue
-                
+                self.horizontal(4)
+
             elif mark == 1:
-                self.first_coor = choice(self.all_coor)
-                if self.first_coor[1] > 6:
-                    self.first_coor[1] = 6
-                self.second_coor = [self.first_coor[0]] + [self.first_coor[1] + 1]
-                self.third_coor = [self.first_coor[0]] + [self.first_coor[1] + 2]
-                self.fourth_coor = [self.first_coor[0]] + [self.first_coor[1] + 3]
-                if self.first_coor not in self.ships and self.second_coor not in self.ships and self.third_coor not in self.ships and self.fourth_coor not in self.ships:
-                    self.ships.extend([self.first_coor, self.second_coor, self.third_coor, self.fourth_coor])
-                    counter += 1
-                else:
-                    continue
-                
+                self.vertical(4)
+            counter += 1
         #for ships which has 3 units
         counter = 0
         while True:
             mark = randint(0,1)
             if counter == 2:
                 break
-            
+
             elif mark == 0:
-                self.first_coor = choice(self.all_coor)
-                if self.first_coor[0] > 7:
-                    self.first_coor[0] = 7
-                self.second_coor = [self.first_coor[0] + 1] + [self.first_coor[1]]
-                self.third_coor = [self.first_coor[0] + 2] + [self.first_coor[1]]
-                if self.first_coor not in self.ships and self.second_coor not in self.ships and self.third_coor not in self.ships:
-                    self.ships.extend([self.first_coor, self.second_coor, self.third_coor])
-                    counter += 1
-                else:
-                    continue
-                
+                self.horizontal(3)
+
             elif mark == 1:
-                self.first_coor = choice(self.all_coor)
-                if self.first_coor[1] > 7:
-                    self.first_coor[1] = 7
-                self.second_coor = [self.first_coor[0]] + [self.first_coor[1] + 1]
-                self.third_coor = [self.first_coor[0]] + [self.first_coor[1] + 2]
-                if self.first_coor not in self.ships and self.second_coor not in self.ships and self.third_coor not in self.ships:
-                    self.ships.extend([self.first_coor, self.second_coor, self.third_coor])
-                    counter += 1
-                else:
-                    continue
+                self.vertical(3)
+            counter += 1
         #for ships which has 2 units
         counter = 0
         while True:
             mark = randint(0,1)
             if counter == 2:
                 break
-            
+
             elif mark == 0:
-                self.first_coor = choice(self.all_coor)
-                if self.first_coor[0] > 8:
-                    self.first_coor[0] = 8
-                self.second_coor = [self.first_coor[0] + 1] + [self.first_coor[1]]
-                if (self.first_coor not in self.ships) and (self.second_coor not in self.ships):
-                    self.ships.extend([self.first_coor, self.second_coor])
-                    counter += 1
-                else:
-                    continue
-                
+                self.horizontal(2)
+
             elif mark == 1:
-                self.first_coor = choice(self.all_coor)
-                if self.first_coor[1] > 8:
-                    self.first_coor[1] = 8
-                self.second_coor = [self.first_coor[0]] + [self.first_coor[1] + 1]
-                if (self.first_coor not in self.ships) and (self.second_coor not in self.ships):
-                    self.ships.extend([self.first_coor, self.second_coor])
-                    counter += 1
-                else:
-                    continue
+                self.vertical(2)
+            counter += 1
         #for ships which has 1 unit
         counter = 0
         while True:
             mark = randint(0,1)
             if counter == 2:
                 break
-            self.coor = choice(self.all_coor)
-            if self.coor not in self.ships:
-                    self.ships.extend([self.coor])
-                    counter += 1
-            else:
-                continue
-            
-    def print_table(self):
-        for item in self.table:
-            print("\n\t".expandtabs(20),*item)
+            self.horizontal(1)
+            counter += 1
 
-    def coordinate(self):
-        global y
-        global x
-        y = int(input("\nPlease choose the y axis:"))
-        x = int(input("\nPlease choose the x axis:"))
-        y = y - 1
-        x = x - 1
-     
+
     def all_ships(self):
         for ship in self.ships:
             self.table[ship[0]][ship[1]] = "XX"
         return self.table
+
+    def print_table(self):
+        for item in self.table:
+            print("\n\t".expandtabs(20),*item)
+        if self.time:
+            sleep(1)
+    
+    def coordinate(self):
+        global y
+        global x
+        while True:
+            y = input("\nPlease choose the y axis:")
+            if y.isdigit() == False:
+                print("Please enter number between 0 - 10.")
+                time = False
+                continue
+            else:
+                y = int(y)
+            y = y - 1
+            if y > 9 or y < 0:
+                print("Please enter number between 0 - 10.")
+                continue
+            
+            x = input("\nPlease choose the x axis:")
+            if x.isdigit() == False:
+                print("Please enter number between 0 - 10.")
+                time = False
+                continue
+            else:
+                x = int(x)
+            x = x - 1
+            if x > 9 or x < 0:
+                print("Please enter number between 0 - 10.")
+                continue
+            if self.table[y][x] == "  " or self.table[y][x] == "XX":
+                print("You've already fire there.Please try again.")
+                continue
+            else:
+                break
+
     def fire(self):
+        global time
         if [y, x] not in self.ships:
             self.table[y][x] = "  "
+            self.time = True
         else:
             self.table[y][x] = "XX"
+            self.time = False
         for ship in self.ships[0:4]:
             if [y, x] in self.ships[0:4]:
                 self.table[ship[0]][ship[1]] = "XX"
@@ -158,46 +195,47 @@ class Battleships():
             if [y, x] in self.ships[19:20]:
                 self.table[ship[0]][ship[1]] = "XX"
         return self.table
-    def print(self):
+
+    def prnt(self):
         print("*"*15,"BATTLESHIPS","*"*15)
         print("""\n           WELCOME TO BATTLESHIPS\n
         There are 8 ships.Two of them has 4 unit.
                           Two of them has 3 unit.
                           Two of them has 2 unit.
                           Two of them has 1 unit.
+        Ships are not besides each other.
         You can shoot them 15 times.
         You can choose the coordinates to shoot there.""")
+
+
     def play(self):
-        turn = 0
-        while True:    
-            self.print_table()
-            self.coordinate()
-            self.fire()
-            turn += 1
-            if turn == 3:
-                print("Game over.You lose.")
-                self.all_ships()
+        self.prnt()
+        self.turn = 0
+        self.ships = []#all ships which are deployed
+        self.deploy()
+        try:
+            while True:
+                if self.turn == 15:
+                    print("Game over.You lose.")
+                    self.all_ships()
+                    self.print_table()
+                    break
+                
                 self.print_table()
-                break
-            counter = 0
-            for items in self.table:
-                for item in items:
-                    if item == "XX":
-                        counter += 1
-            if counter == 20:
-                print_table()
-                print("\nCongratulations.You've hit the each ships.")
-                break
+                self.coordinate()
+                self.fire()
+                self.turn += 1
 
-battle = Battleships()        
-    
-    
-    
+                counter = 0
+                for items in self.table:
+                    for item in items:
+                        if item == "XX":
+                            counter += 1
+                if counter == 20:
+                    self.print_table()
+                    print("\nCongratulations.You've hit the each ships.")
+                    break
+        except:
+            print("Something happened wrong, please try again")
 
-
-
-
-
-
-        
-
+battle1 = battleships()
